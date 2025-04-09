@@ -2,42 +2,41 @@ import matplotlib.pyplot as plt
 import random
 import bisect
 
-# Embaralhar a lista inicial
+# Shuffle the initial list
 a = list(range(100))
 random.shuffle(a)
 
-# Inicializar lista ordenada anterior como vazia
-l1_anterior = []
+# Initialize previous sorted list as empty
+previous_sorted = []
 
 while True:
     plt.figure()
     plt.bar(range(len(a)), a)
     plt.show()
 
-    l1 = []
-    l2 = []
+    sorted_part = []
+    unsorted_part = []
 
-    # Parte não ordenada: só os elementos da rodada atual
-    parte_nao_ordenada = a[:len(a) - len(l1_anterior)]
+    # Unsorted portion: only the elements from the current round
+    current_round = a[:len(a) - len(previous_sorted)]
 
-    for i in parte_nao_ordenada:
-        if not l1:
-            l1.append(i)
+    for i in current_round:
+        if not sorted_part:
+            sorted_part.append(i)
             continue
-        if i > l1[-1]:
-            l1.append(i)
+        if i > sorted_part[-1]:
+            sorted_part.append(i)
         else:
-            l2.append(i)
+            unsorted_part.append(i)
 
-    # Aplicar busca binária em l1_anterior se existir
-    if l1_anterior:
-        index = bisect.bisect_right(l1_anterior, l1[-1])
-        l1.extend(l1_anterior[index:])
-        l2.extend(l1_anterior[:index])
+    # Apply binary search on previous_sorted if it exists
+    if previous_sorted:
+        index = bisect.bisect_right(previous_sorted, sorted_part[-1])
+        sorted_part.extend(previous_sorted[index:])
+        unsorted_part.extend(previous_sorted[:index])
 
-    a = l2 + l1
-    l1_anterior = l1[:]
+    a = unsorted_part + sorted_part
+    previous_sorted = sorted_part[:]
 
-    if len(l1) == len(a):
+    if len(sorted_part) == len(a):
         break
-
