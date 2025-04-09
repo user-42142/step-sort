@@ -1,5 +1,6 @@
 # step-sort
 A new sort algorithim
+
 This algorithm is a method for sorting any shuffled list of numbers. The main idea is to build, in each round, a growing subsequence from the first elements that are not yet in order.
 
 At the beginning, a list is defined as the current version of the shuffled list, and an auxiliary variable stores the growing subsequence formed in the previous round. The algorithm enters a loop that continues until all elements are in ascending order.
