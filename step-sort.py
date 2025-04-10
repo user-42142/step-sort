@@ -24,7 +24,7 @@ while True:
         if not sorted_part:
             sorted_part.append(i)
             continue
-        if i > sorted_part[-1]:
+        if i >= sorted_part[-1]:
             sorted_part.append(i)
         else:
             unsorted_part.append(i)
