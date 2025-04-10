@@ -12,7 +12,7 @@ previous_sorted = []
 while True:
     plt.figure()
     plt.bar(range(len(a)), a)
-    plt.show()
+    plt.clf()
 
     sorted_part = []
     unsorted_part = []
@@ -40,3 +40,4 @@ while True:
 
     if len(sorted_part) == len(a):
         break
+plt.show()
