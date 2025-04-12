@@ -34,10 +34,9 @@ while True:
         index = bisect.bisect_right(previous_sorted, sorted_part[-1])
         sorted_part.extend(previous_sorted[index:])
         unsorted_part.extend(previous_sorted[:index])
-
-    a = unsorted_part + sorted_part
     previous_sorted = sorted_part[:]
-
+    
+    a = unsorted_part + sorted_part
     if len(sorted_part) == len(a):
         break
 plt.show()
