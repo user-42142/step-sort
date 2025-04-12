@@ -28,7 +28,7 @@ while True:
             sorted_part.append(i)
         else:
             unsorted_part.append(i)
-    # The following part is not mandatory, if you want, you can delete this part and the code will work the same way.
+    # The following part is not mandatory (although it makes the code faster), if you want, you can delete this part and the code will work the same way.
     # Apply binary search on previous_sorted if it exists
     if previous_sorted:
         index = bisect.bisect_right(previous_sorted, sorted_part[-1])
