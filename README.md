@@ -5,11 +5,11 @@ This algorithm is a method for sorting any shuffled list of numbers. The main id
 
 At the beginning, a list is defined as the current version of the shuffled list, and an auxiliary variable stores the growing subsequence formed in the previous round. The algorithm enters a loop that continues until all elements are in ascending order.
 
-In each round, the part of the list that still needs to be organized is analyzed. From this part, the algorithm tries to form an increasing subsequence (called l1), adding elements as long as they are greater than the last inserted value. Elements that do not fit into this sequence go into a separate list (called l2).
+In each round, the part of the list that still needs to be organized is analyzed. From this part, the algorithm tries to form an increasing subsequence (called sorted_part), adding elements as long as they are greater than the last inserted value. Elements that do not fit into this sequence go into a separate list (called unsorted_part).
 
-After that, the increasing subsequence from the previous round is used to assist with organization. Through a binary search, it is divided into two parts: the elements that are still greater than the last one in l1, and those that are smaller or equal. The larger ones are added to the end of l1, maintaining the increasing order, while the others go into l2, since they still need more rounds to be properly positioned.
+After that, the increasing subsequence from the previous round is used to assist with organization. Through a binary search, it is divided into two parts: the elements that are still greater than the last one in sorted_part, and those that are smaller or equal. The larger ones are added to the end of sorted_part, maintaining the increasing order, while the others go into unsorted_part, since they still need more rounds to be properly positioned.
 
-The main list is then updated by placing first the unordered elements (l2), followed by those already in order (l1). The l1 subsequence formed in this round becomes the new reference for the next iteration.
+The main list is then updated by placing first the unordered elements (unsorted_part), followed by those already in order (sorted_part). The sorted_part subsequence formed in this round becomes the new reference for the next iteration.
 
 This process repeats until all elements in the list form a single increasing sequence — in other words, until the list is completely sorted.
 
